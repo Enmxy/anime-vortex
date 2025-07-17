@@ -1,0 +1,23 @@
+/* Custom Netflix-style Scrollbar */
+::-webkit-scrollbar {
+    height: 12px;
+    width: 10px;
+    background: #181818;
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #e50914;
+    border-radius: 8px;
+    border: 2px solid #23243a;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #b0060f;
+}
+::-webkit-scrollbar-corner {
+    background: #181818;
+}
+
+.manga-archive-row {
+    scrollbar-color: #e50914 #181818;
+    scrollbar-width: thin;
+}

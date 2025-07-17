@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Arşivi - Anime Vortex</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="custom-scrollbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: var(--netflix-black, #141414);
+            color: var(--netflix-white, #fff);
+        }
+        .archive-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 4%;
+        }
+        .filter-container {
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        .filter-btn {
+            background-color: #333;
+            color: #fff;
+            border: 2px solid #444;
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--netflix-red, #e50914);
+            border-color: var(--netflix-red, #e50914);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(229, 9, 20, 0.5);
+        }
+        .manga-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .manga-card {
+            display: block; /* Kartların gizlenip gösterilmesi için */
+        }
+        /* Animasyon */
+        @keyframes cardFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .manga-card.visible {
+            animation: cardFadeIn 0.5s ease forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+      <nav>
+        <div class="logo">Anime Vortex</div>
+        <div class="nav-items">
+          <a href="index.html" class="active">Ana Sayfa</a>
+          <a href="#">Mangalar</a>
+          <a href="#populer-mangalar">Popülerler</a>
+          <a href="index.html#yeni-gelenler">Yeni Çıkanlar</a>
+          <a href="manga-arsiv.html" class="active">Manga Arşiv</a>
+          <a href="hakkinda.html">Hakkımızda</a>
+        </div>
+      </nav>
+</header>
+    <main class="archive-container">
+        <section class="filter-container">
+            <button class="filter-btn active" data-genre="all">Tümü</button>
+            <button class="filter-btn" data-genre="Aksiyon">Aksiyon</button>
+            <button class="filter-btn" data-genre="Komedi">Komedi</button>
+            <button class="filter-btn" data-genre="Dram">Dram</button>
+            <button class="filter-btn" data-genre="Fantastik">Fantastik</button>
+            <button class="filter-btn" data-genre="Macera">Macera</button>
+            <button class="filter-btn" data-genre="Süper Güç">Süper Güç</button>
+        </section>
+
+        <section class="manga-grid">
+            <!-- Mevcut Mangalar -->
+            <div class="manga-card visible" data-genre="Aksiyon,Fantastik" onclick="window.location.href='mangalar/jujutsu-kaisen-bolumler.html'">
+                <img src="images/jujutsu-kaisen.jpg" alt="Jujutsu Kaisen">
+                <div class="manga-overlay"><h3>Jujutsu Kaisen</h3><span class="manga-badge">Aksiyon</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Macera" onclick="window.location.href='mangalar/one-piece-bolumler.html'">
+                <img src="images/one-piece.jpg" alt="One Piece">
+                <div class="manga-overlay"><h3>One Piece</h3><span class="manga-badge">Macera</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Dram,Fantastik" onclick="window.location.href='mangalar/oshi-no-ko-bolumler.html'">
+                <img src="images/oshi-no-ko.jpg" alt="Oshi no Ko">
+                <div class="manga-overlay"><h3>Oshi no Ko</h3><span class="manga-badge">Dram</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Komedi,Aksiyon" onclick="window.location.href='mangalar/spy-x-family-bolumler.html'">
+                <img src="images/spy-x-family.jpg" alt="Spy x Family">
+                <div class="manga-overlay"><h3>Spy x Family</h3><span class="manga-badge">Komedi</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Süper Güç,Aksiyon" onclick="window.location.href='mangalar/my-hero-academia-bolumler.html'">
+                <img src="images/my-hero-academia.jpg" alt="My Hero Academia">
+                <div class="manga-overlay"><h3>My Hero Academia</h3><span class="manga-badge">Süper Güç</span></div>
+            </div>
+
+            <!-- Yeni Eklenen Mangalar -->
+            <div class="manga-card visible" data-genre="Aksiyon,Fantastik" onclick="window.location.href='#'"> <!-- Link eklenecek -->
+                <img src="images/chainsaw-man.jpg" alt="Chainsaw Man">
+                <div class="manga-overlay"><h3>Chainsaw Man</h3><span class="manga-badge">Aksiyon</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Macera,Dram" onclick="window.location.href='#'"> <!-- Link eklenecek -->
+                <img src="images/vinland-saga.jpg" alt="Vinland Saga">
+                <div class="manga-overlay"><h3>Vinland Saga</h3><span class="manga-badge">Macera</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Süper Güç" onclick="window.location.href='mangalar/blue-lock-bolumler.html'"> <!-- Link eklenecek -->
+                <img src="images/blue-lock.jpg" alt="Blue Lock">
+                <div class="manga-overlay"><h3>Blue Lock</h3><span class="manga-badge">Spor</span></div>
+            </div>
+             <div class="manga-card visible" data-genre="Fantastik,Macera" onclick="window.location.href='#'"> <!-- Link eklenecek -->
+                <img src="images/frieren.jpg" alt="Frieren">
+                <div class="manga-overlay"><h3>Frieren</h3><span class="manga-badge">Fantastik</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Dram,Komedi" onclick="window.location.href='#'"> <!-- Link eklenecek -->
+                <img src="images/kaguya-sama.jpg" alt="Kaguya-sama">
+                <div class="manga-overlay"><h3>Kaguya-sama</h3><span class="manga-badge">Komedi</span></div>
+            </div>
+
+            <!-- 20+ Yeni Manga -->
+            <div class="manga-card visible" data-genre="Aksiyon,Dram,Fantastik" onclick="window.location.href='#'">
+                <img src="images/attack-on-titan.jpg" alt="Attack on Titan">
+                <div class="manga-overlay"><h3>Attack on Titan</h3><span class="manga-badge">Aksiyon</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Fantastik,Macera" onclick="window.location.href='#'">
+                <img src="images/demon-slayer.jpg" alt="Demon Slayer">
+                <div class="manga-overlay"><h3>Demon Slayer</h3><span class="manga-badge">Fantastik</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Dram,Fantastik" onclick="window.location.href='#'">
+                <img src="images/berserk.jpg" alt="Berserk">
+                <div class="manga-overlay"><h3>Berserk</h3><span class="manga-badge">Dram</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Macera,Dram" onclick="window.location.href='#'">
+                <img src="images/vagabond.jpeg" alt="Vagabond">
+                <div class="manga-overlay"><h3>Vagabond</h3><span class="manga-badge">Macera</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Macera,Fantastik" onclick="window.location.href='#'">
+                <img src="images/fullmetal-alchemist.jpg" alt="Fullmetal Alchemist">
+                <div class="manga-overlay"><h3>Fullmetal Alchemist</h3><span class="manga-badge">Fantastik</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Dram,Fantastik" onclick="window.location.href='#'">
+                <img src="images/death-note.jpg" alt="Death Note">
+                <div class="manga-overlay"><h3>Death Note</h3><span class="manga-badge">Dram</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Komedi,Süper Güç" onclick="window.location.href='#'">
+                <img src="images/one-punch-man.jpg" alt="One-Punch Man">
+                <div class="manga-overlay"><h3>One-Punch Man</h3><span class="manga-badge">Komedi</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Komedi,Süper Güç" onclick="window.location.href='#'">
+                <img src="images/mob-pyscho.webp" alt="Mob Psycho 100">
+                <div class="manga-overlay"><h3>Mob Psycho 100</h3><span class="manga-badge">Süper Güç</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Dram,Fantastik" onclick="window.location.href='#'">
+                <img src="images/the-promised-neverland.jpg" alt="The Promised Neverland">
+                <div class="manga-overlay"><h3>The Promised Neverland</h3><span class="manga-badge">Fantastik</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Macera,Komedi" onclick="window.location.href='#'">
+                <img src="images/dr-stone.jpg" alt="Dr. Stone">
+                <div class="manga-overlay"><h3>Dr. Stone</h3><span class="manga-badge">Macera</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Fantastik,Süper Güç" onclick="window.location.href='#'">
+                <img src="images/fire-force.jpg" alt="Fire Force">
+                <div class="manga-overlay"><h3>Fire Force</h3><span class="manga-badge">Aksiyon</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Fantastik,Macera" onclick="window.location.href='#'">
+                <img src="images/black-clover.jpg" alt="Black Clover">
+                <div class="manga-overlay"><h3>Black Clover</h3><span class="manga-badge">Fantastik</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Macera,Fantastik" onclick="window.location.href='#'">
+                <img src="images/hunter-x-hunter.jpg" alt="Hunter x Hunter">
+                <div class="manga-overlay"><h3>Hunter x Hunter</h3><span class="manga-badge">Macera</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Macera,Süper Güç" onclick="window.location.href='#'">
+                <img src="images/bleach.jpg" alt="Bleach">
+                <div class="manga-overlay"><h3>Bleach</h3><span class="manga-badge">Aksiyon</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Macera,Fantastik" onclick="window.location.href='#'">
+                <img src="images/naruto.jpg" alt="Naruto">
+                <div class="manga-overlay"><h3>Naruto</h3><span class="manga-badge">Aksiyon</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Komedi,Dram" onclick="window.location.href='#'">
+                <img src="images/haikyuu.jpg" alt="Haikyuu!!">
+                <div class="manga-overlay"><h3>Haikyuu!!</h3><span class="manga-badge">Komedi</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Dram,Macera" onclick="window.location.href='#'">
+                <img src="images/kingdom.jpg" alt="Kingdom">
+                <div class="manga-overlay"><h3>Kingdom</h3><span class="manga-badge">Aksiyon</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Komedi,Macera" onclick="window.location.href='#'">
+                <img src="images/gintama.jpg" alt="Gintama">
+                <div class="manga-overlay"><h3>Gintama</h3><span class="manga-badge">Komedi</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Dram,Fantastik" onclick="window.location.href='#'">
+                <img src="images/tokyo-ghoul.jpg" alt="Tokyo Ghoul">
+                <div class="manga-overlay"><h3>Tokyo Ghoul</h3><span class="manga-badge">Dram</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Komedi,Dram" onclick="window.location.href='#'">
+                <img src="images/slam-dunk.jpg" alt="Slam Dunk">
+                <div class="manga-overlay"><h3>Slam Dunk</h3><span class="manga-badge">Komedi</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Dram" onclick="window.location.href='#'">
+                <img src="images/monster.png" alt="Monster">
+                <div class="manga-overlay"><h3>Monster</h3><span class="manga-badge">Dram</span></div>
+            </div>
+
+            <!-- Yeni Eklenen 10 Manga Kartı -->
+            <div class="manga-card visible" data-genre="Macera,Fantastik" onclick="window.location.href='#'">
+                <img src="images/magi.jpg" alt="Magi">
+                <div class="manga-overlay"><h3>Magi</h3><span class="manga-badge">Fantastik</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Macera" onclick="window.location.href='#'">
+                <img src="images/dorohedoro.jpg" alt="Dorohedoro">
+                <div class="manga-overlay"><h3>Dorohedoro</h3><span class="manga-badge">Aksiyon</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Komedi,Macera" onclick="window.location.href='#'">
+                <img src="images/yotsuba.jpg" alt="Yotsuba&!">
+                <div class="manga-overlay"><h3>Yotsuba&!</h3><span class="manga-badge">Komedi</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Dram,Fantastik" onclick="window.location.href='#'">
+                <img src="images/claymore.jpg" alt="Claymore">
+                <div class="manga-overlay"><h3>Claymore</h3><span class="manga-badge">Dram</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Macera" onclick="window.location.href='#'">
+                <img src="images/fairy-tail.jpg" alt="Fairy Tail">
+                <div class="manga-overlay"><h3>Fairy Tail</h3><span class="manga-badge">Macera</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Dram,Fantastik" onclick="window.location.href='#'">
+                <img src="images/march-comes-in-like-a-lion.jpg" alt="March Comes in Like a Lion">
+                <div class="manga-overlay"><h3>March Comes in Like a Lion</h3><span class="manga-badge">Dram</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Komedi" onclick="window.location.href='#'">
+                <img src="images/sket-dance.jpg" alt="Sket Dance">
+                <div class="manga-overlay"><h3>Sket Dance</h3><span class="manga-badge">Komedi</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Fantastik" onclick="window.location.href='#'">
+                <img src="images/black-cat.png" alt="Black Cat">
+                <div class="manga-overlay"><h3>Black Cat</h3><span class="manga-badge">Aksiyon</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Dram,Macera" onclick="window.location.href='#'">
+                <img src="images/20th-century-boys.jpg" alt="20th Century Boys">
+                <div class="manga-overlay"><h3>20th Century Boys</h3><span class="manga-badge">Dram</span></div>
+            </div>
+            <div class="manga-card visible" data-genre="Aksiyon,Fantastik" onclick="window.location.href='#'">
+                <img src="images/soul-eater.jpg" alt="Soul Eater">
+                <div class="manga-overlay"><h3>Soul Eater</h3><span class="manga-badge">Fantastik</span></div>
+            </div>
+
+            <div class="manga-card visible" data-genre="Aksiyon,Macera,Fantastik" onclick="window.location.href='#'">
+                <img src="images/jojo.jpg" alt="JoJo's Bizarre Adventure">
+                <div class="manga-overlay"><h3>JoJo's Bizarre Adventure</h3><span class="manga-badge">Aksiyon</span></div>
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const mangaCards = document.querySelectorAll('.manga-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Aktif butonu ayarla
+                    document.querySelector('.filter-btn.active').classList.remove('active');
+                    button.classList.add('active');
+
+                    const selectedGenre = button.getAttribute('data-genre');
+
+                    mangaCards.forEach(card => {
+                        const cardGenres = card.getAttribute('data-genre');
+                        if (selectedGenre === 'all' || cardGenres.includes(selectedGenre)) {
+                            card.style.display = 'block';
+                            card.classList.add('visible');
+                        } else {
+                            card.style.display = 'none';
+                            card.classList.remove('visible');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

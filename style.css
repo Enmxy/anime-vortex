@@ -1,0 +1,659 @@
+:root {
+    --primary-color: #e50914;
+    --secondary-color: #221f1f;
+    --dark-bg: #141414;
+    --lighter-bg: #222;
+    --glass-bg: rgba(34, 31, 31, 0.85);
+    --text-color: #fff;
+    --card-glow: 0 0 24px 6px rgba(229,9,20,0.4);
+    --card-shadow: 0 4px 24px 0 rgba(0,0,0,0.7);
+    --gradient-hero: linear-gradient(120deg, #141414 60%, #e50914 120%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    background: linear-gradient(120deg, #141414 60%, #221f1f 100%);
+    color: var(--text-color);
+    min-height: 100vh;
+    letter-spacing: 0.01em;
+}
+
+.header {
+    background: rgba(20, 20, 20, 0.95);
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.6);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.2rem 2.5rem;
+    gap: 2rem;
+}
+
+.nav-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    flex: 1;
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+@media (max-width: 900px) {
+    .nav-items {
+        gap: 1.3rem;
+    }
+    nav {
+        gap: 0.3rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .nav-items {
+        gap: 0.6rem;
+    }
+    .auth-buttons button {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.9rem;
+    }
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 16px #e50914aa;
+    filter: brightness(1.2);
+    transition: text-shadow 0.3s;
+}
+.logo:hover {
+    text-shadow: 0 4px 32px #e50914cc, 0 2px 16px #fff3;
+}
+
+.nav-items a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 2.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    opacity: 0.85;
+    position: relative;
+    transition: color 0.2s, opacity 0.3s;
+}
+.nav-items a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width .3s;
+    margin-top: 4px;
+}
+.nav-items a:hover {
+    color: var(--primary-color);
+    opacity: 1;
+}
+.nav-items a:hover::after {
+    width: 100%;
+}
+
+.auth-buttons button {
+    background: var(--primary-color);
+    border: none;
+    color: #fff;
+    padding: 0.6rem 1.3rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    border-radius: 24px;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 2px 12px #e5091440;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+.auth-buttons button:hover {
+    background: #b0060f;
+    transform: scale(1.07);
+    box-shadow: 0 4px 24px #e50914a0;
+}
+
+.hero {
+    background: var(--gradient-hero), url('images/hero-bg.jpg') center/cover no-repeat;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 40px 0 #e5091435;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    background: linear-gradient(90deg, #141414 60%, transparent 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    margin-left: 6vw;
+    max-width: 600px;
+    padding: 4rem 0 3rem 0;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 1.3rem;
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+    text-shadow: 0 4px 32px #e5091440, 0 2px 8px #000a;
+}
+.hero-content p {
+    font-size: 1.35rem;
+    margin-bottom: 2.2rem;
+    color: #fff;
+    opacity: 0.88;
+    text-shadow: 0 2px 8px #000a;
+}
+
+.cta-button {
+    background: linear-gradient(90deg, #e50914 60%, #b0060f 100%);
+    color: white;
+    border: none;
+    padding: 1.1rem 2.7rem;
+    font-size: 1.35rem;
+    border-radius: 32px;
+    cursor: pointer;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    box-shadow: 0 4px 32px #e50914a0, 0 2px 8px #000a;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+.cta-button:hover {
+    background: linear-gradient(90deg, #b0060f 60%, #e50914 100%);
+    transform: scale(1.08);
+    box-shadow: 0 8px 40px #e50914cc, 0 2px 8px #000a;
+}
+
+.manga-grid {
+    padding: 5rem 2.5rem 2.5rem 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+    box-sizing: border-box;
+}
+
+.manga-grid h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 2.2rem;
+    color: #fff;
+    letter-spacing: 0.03em;
+}
+
+.manga-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.7rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    z-index: 2;
+    justify-items: center;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+@media (max-width: 900px) {
+    .manga-row {
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 1.1rem;
+    }
+}
+@media (max-width: 700px) {
+    .manga-row {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1.1rem;
+        border-width: 1.5px;
+    }
+    .manga-card {
+        width: 100%;
+        min-width: 140px;
+        max-width: 210px;
+        height: 170px;
+    }
+    .manga-card img {
+        height: 85px;
+    }
+}
+
+.manga-card {
+    width: 210px;
+    height: 320px;
+    background: var(--glass-bg);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #e5091440;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.18s, box-shadow 0.18s;
+    display: flex;
+    flex-direction: column;
+position: relative;
+cursor: pointer;
+transition: transform 0.18s, box-shadow 0.18s;
+display: flex;
+flex-direction: column;
+    transition: transform 0.28s cubic-bezier(.21,1.02,.73,1.03), box-shadow 0.25s, filter 0.25s;
+    filter: brightness(0.95) grayscale(0.07);
+    border: 1.5px solid #fff1;
+}
+.manga-card:hover {
+    transform: scale(1.09) rotateZ(-1.2deg);
+    box-shadow: var(--card-glow), 0 8px 48px 0 #e5091430;
+    filter: brightness(1.08) grayscale(0);
+    z-index: 2;
+    border: 2.5px solid #e50914cc;
+}
+.manga-card img {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    border-bottom: 1.5px solid #fff2;
+    transition: filter 0.3s;
+    display: block;
+}
+.manga-card .manga-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(0deg, #141414ee 80%, transparent 100%);
+    padding: 1.2rem 1rem 1rem 1rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: 0 0 18px 18px;
+    min-height: 70px;
+}
+.manga-card h3 {
+    padding: 0;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.01em;
+    text-shadow: 0 2px 8px #e5091440;
+}
+.manga-badge {
+    background: linear-gradient(90deg, #e50914 60%, #b0060f 100%);
+    color: #fff;
+    font-size: 0.89rem;
+    font-weight: 700;
+    padding: 0.23rem 0.9rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px #e5091440;
+    text-shadow: 0 1px 4px #000a;
+    margin-top: 0.2rem;
+    letter-spacing: 0.02em;
+    pointer-events: auto;
+    border: none;
+    outline: none;
+    opacity: 0.95;
+    transition: background 0.25s, color 0.25s, transform 0.25s;
+}
+.manga-card:hover .manga-badge {
+    background: linear-gradient(90deg, #b0060f 60%, #e50914 100%);
+    color: #fff;
+    transform: scale(1.08);
+}
+.manga-card:hover .manga-overlay {
+    background: linear-gradient(0deg, #e50914ee 60%, transparent 100%);
+}
+
+
+footer {
+    background: rgba(30, 30, 30, 0.98);
+    padding: 2.5rem 1rem 1.5rem 1rem;
+    text-align: center;
+    color: #fff;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    box-shadow: 0 -2px 16px #e5091420;
+    margin-top: 4rem;
+}
+
+/* Bölümler sayfası ve detaylar */
+.manga-details {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem 2rem 2rem;
+}
+.manga-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 2.7rem;
+    margin-bottom: 3.5rem;
+    background: var(--glass-bg);
+    border-radius: 18px;
+    box-shadow: 0 2px 24px #e5091420;
+    padding: 2.5rem 2rem;
+}
+.manga-header img {
+    width: 220px;
+    height: 320px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 32px #e5091440;
+    border: 2px solid #fff1;
+}
+.manga-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    justify-content: center;
+}
+.manga-info h1 {
+    font-size: 2.3rem;
+    font-weight: 900;
+    margin-bottom: 0.7rem;
+    color: #fff;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 12px #e50914cc, 0 2px 24px #e5091420;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.manga-info .manga-badge {
+    font-size: 1rem;
+    padding: 0.3rem 1.2rem;
+    border-radius: 22px;
+    box-shadow: 0 2px 16px #e50914a0;
+    margin-left: 0.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: linear-gradient(90deg, #e50914 60%, #b0060f 100%);
+    color: #fff;
+    border: none;
+    outline: none;
+}
+
+.manga-info p {
+    font-size: 1.1rem;
+    color: #fff;
+    opacity: 0.85;
+    margin-bottom: 0.2rem;
+}
+.chapters {
+    margin-top: 2.5rem;
+}
+.chapters h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    text-shadow: 0 2px 8px #e5091440;
+}
+.chapter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.chapter-card {
+    display: flex;
+    align-items: center;
+    background: var(--glass-bg);
+    border-radius: 12px;
+    box-shadow: 0 2px 18px #e5091420;
+    padding: 1.3rem 2rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    border: 1.2px solid #fff1;
+    position: relative;
+}
+.chapter-card:hover {
+    box-shadow: 0 4px 32px #e5091440;
+    transform: scale(1.03);
+    border: 2px solid #e50914cc;
+}
+.chapter-number {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-right: 2rem;
+    text-shadow: 0 2px 12px #e5091440;
+    min-width: 48px;
+    text-align: center;
+}
+.chapter-info h3 {
+    font-size: 1.18rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+.chapter-info p {
+    color: #fff;
+    font-size: 1rem;
+    opacity: 0.85;
+}
+.read-btn {
+    background: linear-gradient(90deg, #e50914 60%, #b0060f 100%);
+    color: white;
+    border: none;
+    padding: 0.7rem 1.8rem;
+    font-size: 1.1rem;
+    border-radius: 22px;
+    cursor: pointer;
+    font-weight: 700;
+    margin-left: auto;
+    box-shadow: 0 2px 12px #e5091440;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+.read-btn:hover {
+    background: linear-gradient(90deg, #b0060f 60%, #e50914 100%);
+    transform: scale(1.08);
+    box-shadow: 0 8px 32px #e50914cc;
+}
+
+/* Modal ve Auth stilleri */
+.auth-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(20,20,20,0.88);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+}
+.auth-content {
+    background: var(--glass-bg);
+    padding: 2.5rem 2rem 2rem 2rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 2px 24px #e5091440;
+}
+.auth-content h2 {
+    color: #fff;
+    margin-bottom: 1.3rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+}
+.auth-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.auth-content input {
+    padding: 1rem;
+    border: 1.5px solid #333;
+    border-radius: 7px;
+    background: #222;
+    color: #fff;
+    font-size: 1.1rem;
+}
+.auth-content button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-top: 0.7rem;
+    box-shadow: 0 2px 12px #e5091440;
+    transition: background 0.2s, transform 0.2s;
+}
+.auth-content button:hover {
+    background: #b0060f;
+    transform: scale(1.04);
+}
+.auth-content a {
+    color: #e50914;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+    .manga-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem 1rem;
+    }
+    .manga-header img {
+        width: 170px;
+        height: 240px;
+    }
+}
+@media (max-width: 900px) {
+    .hero-content {
+        margin-left: 2vw;
+        padding: 2rem 0 2rem 0;
+    }
+    .manga-grid {
+        padding: 2.5rem 0.7rem 2rem 0.7rem;
+    }
+}
+@media (max-width: 700px) {
+    .hero-content h1 {
+        font-size: 2.1rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .manga-row {
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 1.1rem;
+    }
+    .manga-card img {
+        height: 180px;
+    }
+    .manga-header img {
+        width: 110px;
+        height: 150px;
+    }
+    .manga-info h1 {
+        font-size: 1.2rem;
+    }
+    .chapter-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem 1rem;
+    }
+}
+@media (max-width: 500px) {
+    nav {
+        flex-direction: column;
+        padding: 0.5rem 0.1rem;
+        gap: 0.3rem;
+    }
+    .logo {
+        font-size: 1rem;
+    }
+    .nav-items a {
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+    }
+    .manga-grid h2 {
+        font-size: 1rem;
+    }
+    .manga-card {
+        padding: 0.5rem 0.2rem;
+    }
+    .footer-content {
+        font-size: 0.85rem;
+        padding: 0.6rem 0.1rem;
+    }
+    .auth-modal, .auth-content {
+        padding: 0.5rem 0.1rem;
+        width: 100vw;
+        max-width: 100vw;
+    }
+}
+
+    nav {
+        flex-direction: column;
+        padding: 0.7rem 0.2rem;
+    }
+    .logo {
+        font-size: 1.1rem;
+    }
+    .nav-items a {
+        margin-left: 1rem;
+        font-size: 0.95rem;
+    }
+    .manga-grid h2 {
+        font-size: 1.1rem;
+    }
+    .footer-content {
+        font-size: 0.9rem;
+    }
+}
+
